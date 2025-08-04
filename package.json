@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "tsc ",
-    "dev": "tsx src/cli.ts",
-    "start": "node dist/cli.js",
+    "dev": "dotenvx run --quiet -- tsx src/cli.ts",
+    "start": "dotenvx run --quiet -- node dist/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,11 +24,11 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "youtube-dl-exec": "^3.0.11",
+    "@dotenvx/dotenvx": "^1.48.4",
     "assemblyai": "^4.14.2",
     "cli-progress": "^3.12.0",
     "commander": "^14.0.0",
-    "dotenv": "^17.2.1",
-    "ora": "^8.2.0"
+    "ora": "^8.2.0",
+    "youtube-dl-exec": "^3.0.11"
   }
 }

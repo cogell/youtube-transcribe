@@ -71,7 +71,7 @@ Creates `transcriptions/{sanitized-video-title}/transcript.txt` where video titl
 - **youtube-dl-exec** - Node.js wrapper for yt-dlp, the most reliable YouTube downloader with anti-bot detection measures
 - **assemblyai** - Official AssemblyAI SDK for transcription
 - **commander** - CLI argument parsing and help generation
-- **dotenv** - Environment variable loading
+- **@dotenvx/dotenvx** - Environment variable loading
 
 ## TypeScript Configuration
 
