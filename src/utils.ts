@@ -35,6 +35,17 @@ export function validateYouTubeUrl(url: string): boolean {
   return youtubeRegex.test(url);
 }
 
+export async function copyAudioFile(sourcePath: string, destinationDir: string, fileName: string = 'audio.mp4'): Promise<string> {
+  const destinationPath = path.join(destinationDir, fileName);
+  
+  try {
+    await fs.copyFile(sourcePath, destinationPath);
+    return destinationPath;
+  } catch (error) {
+    throw new Error(`Failed to copy audio file: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 export function log(message: string, verbose: boolean = false): void {
   if (verbose) {
     console.log(`🔍 ${message}`);

@@ -30,8 +30,9 @@ program
       const phases = [
         { name: 'Downloading audio', weight: 30 },
         { name: 'Uploading to AssemblyAI', weight: 20 },
-        { name: 'Transcribing audio', weight: 45 },
-        { name: 'Saving transcript', weight: 5 }
+        { name: 'Transcribing audio', weight: 40 },
+        { name: 'Saving transcript', weight: 5 },
+        { name: 'Saving audio file', weight: 5 }
       ];
       
       progressManager = new ProgressManager(phases, options.verbose);

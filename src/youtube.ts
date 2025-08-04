@@ -1,7 +1,7 @@
 import ytdl from '@distube/ytdl-core';
 import { promises as fs, createWriteStream } from 'fs';
 import path from 'path';
-import { validateYouTubeUrl, log, writeTranscript } from './utils.js';
+import { validateYouTubeUrl, log, writeTranscript, copyAudioFile } from './utils.js';
 import { transcribeAudio } from './transcription.js';
 import { ProgressManager } from './progress.js';
 
@@ -135,6 +135,18 @@ export async function transcribeYouTubeVideo(
         progressManager.completePhase();
       }
       progressManager?.log(`Transcript saved to: ${outputPath}`);
+      
+      // Save audio file to same directory as transcript
+      if (progressManager) {
+        progressManager.startPhase('Saving audio file');
+      }
+      const transcriptDir = path.dirname(outputPath);
+      const audioOutputPath = await copyAudioFile(tempAudioPath, transcriptDir);
+      if (progressManager) {
+        progressManager.updatePhaseProgress(1, 1, `Audio saved to: ${path.basename(audioOutputPath)}`);
+        progressManager.completePhase();
+      }
+      progressManager?.log(`Audio file saved to: ${audioOutputPath}`);
       
     } finally {
       try {
