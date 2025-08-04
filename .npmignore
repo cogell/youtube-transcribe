@@ -1,0 +1,23 @@
+# Development files
+src/
+tsconfig.json
+.env
+.env.*
+.claude/
+
+# Documentation (keep README.md but exclude others)
+spec/
+CLAUDE.md
+
+# Generated content
+transcriptions/
+
+# Dependencies and build artifacts
+node_modules/
+*.log
+*.tgz
+.DS_Store
+
+# Git files
+.git/
+.gitignore
