@@ -13,7 +13,7 @@ const program = new Command();
 program
   .name('youtube-transcripts')
   .description('Extract transcripts from YouTube videos using AssemblyAI')
-  .version('1.0.0')
+  .version('1.1.0')
   .argument('<url>', 'YouTube video URL')
   .option('-o, --output-dir <dir>', 'Output directory', '.')
   .option('-v, --verbose', 'Enable verbose logging')
