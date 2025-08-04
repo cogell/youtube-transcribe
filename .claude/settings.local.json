@@ -3,7 +3,16 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(pnpm build:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "WebFetch(domain:www.assemblyai.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ytjs.dev)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pnpm install:*)",
+      "Bash(node:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm start:*)"
     ],
     "deny": []
   }

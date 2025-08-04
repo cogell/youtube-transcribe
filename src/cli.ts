@@ -17,6 +17,8 @@ program
   .argument('<url>', 'YouTube video URL')
   .option('-o, --output-dir <dir>', 'Output directory', '.')
   .option('-v, --verbose', 'Enable verbose logging')
+  .option('-l, --language <code>', 'Preferred audio language (e.g., en, es, fr)')
+  .option('--debug-only', 'Debug mode - analyze formats but don\'t download or transcribe')
   .action(async (url: string, options) => {
     let progressManager: ProgressManager | undefined;
     
@@ -24,6 +26,12 @@ program
       if (options.verbose) {
         console.log(`Processing YouTube URL: ${url}`);
         console.log(`Output directory: ${options.outputDir}`);
+        if (options.language) {
+          console.log(`Preferred language: ${options.language}`);
+        }
+        if (options.debugOnly) {
+          console.log(`Debug mode: Will analyze formats only`);
+        }
       }
 
       // Initialize progress tracking
@@ -37,14 +45,21 @@ program
       
       progressManager = new ProgressManager(phases, options.verbose);
 
-      await transcribeYouTubeVideo(url, options.outputDir, options.verbose, progressManager);
+      await transcribeYouTubeVideo(url, options.outputDir, options.verbose, progressManager, options.language || 'en', options.debugOnly);
       
       progressManager.complete();
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const fullError = error instanceof Error ? error.stack : String(error);
+      
+      if (options.verbose) {
+        console.error('Full error details:', fullError);
+      }
+      
       if (progressManager) {
-        progressManager.error(error instanceof Error ? error.message : String(error));
+        progressManager.error(errorMessage || 'Unknown error occurred');
       } else {
-        console.error('❌ Error:', error instanceof Error ? error.message : String(error));
+        console.error('❌ Error:', errorMessage || 'Unknown error occurred');
       }
       process.exit(1);
     }

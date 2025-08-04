@@ -24,7 +24,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.16.12",
+    "youtube-dl-exec": "^3.0.11",
     "assemblyai": "^4.14.2",
     "cli-progress": "^3.12.0",
     "commander": "^14.0.0",
