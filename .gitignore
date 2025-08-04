@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+dist/
+
+# Logs
+*.log
+
+# Temporary audio files
+temp_audio_*.mp4
+
+# Transcription output directory
+transcriptions/
+
+# OS files
+.DS_Store
